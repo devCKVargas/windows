@@ -5,7 +5,7 @@ Write-Host "
 ▀▄▀▄▀ █ █░▀█ █▄█ ██▄ ░█░   █▀░ █ █░█
 Set wininet as network downloader "
 
-Copy-Item -Recurse -Force ..\windows\conf\winget\settings.json ~\Appdata\Local\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\LocalState\
+Copy-Item -Recurse -Force ".\conf\winget\settings.json" ~\Appdata\Local\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\LocalState\ #fix!: wrong dir
 
 Write-Host -Foreground Green "
 +-+-+-+-+-+

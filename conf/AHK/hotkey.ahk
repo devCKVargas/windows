@@ -29,3 +29,4 @@ spotify := "spotify"
 
 ;=============TODO============;
 ; ADD voicemeeter as volcontrol := "voicemeeter"
+; fix! terminal elevation

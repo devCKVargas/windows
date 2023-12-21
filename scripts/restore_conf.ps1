@@ -81,14 +81,33 @@ Write-Host "
 ▄▀█ █░█ █▄▀
 █▀█ █▀█ █░█ "
 
-Write-Host -ForegroundColor Blue " Restoring AHK to startup..."
-Copy-Item -Recurse -Force .\scripts\AHK\* '~\Appdata\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\'
+# Todo 
+# fix!: elevation
 
-if ($?) {
-    Write-Host -ForegroundColor Green " ✅ Success!"
+if (-not (Test-Path ~\Documents\AHK\)) {
+    Write-Host -ForegroundColor Yellow " ⚠️ AHK directory not found.."
+    Write-Host -ForegroundColor Blue " Creating directory..."
+    mkdir ~\Documents\AHK\
+
+    if ($?) {
+        Write-Host -ForegroundColor Blue " Restoring AHK to startup..."
+        Copy-Item -Recurse -Force ".\conf\AHK\hotkey.ahk" ~\Documents\AHK\
+
+        if ($?) {
+            Write-Host -ForegroundColor Green " ✅ Success!"
+        }
+    }
 } else {
-    Write-Host -ForegroundColor Red " ❌ Couldn't copy AHK to Startup 📖 Read 👆"
+    Write-Host -ForegroundColor Yellow " ⚠️ Directory already exists. Skipping creation."
+    Write-Host -ForegroundColor Blue " Restoring settings..."
+
+    Copy-Item -Recurse -Force ".\conf\terminal\settings.json" ~\Documents\AHK\
+
+    if ($?) {
+        Write-Host -ForegroundColor Green " ✅ Success!"
+    }
 }
+
 
 Write-Host "
 ▀█▀ ▄▀█ █▀ █▄▀  █▀ █▀▀ █░█ █▀▀ █▀▄ █░█ █░░ █▀▀ █▀█
