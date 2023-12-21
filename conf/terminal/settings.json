@@ -26,6 +26,7 @@
             "keys": "ctrl+shift+f"
         }
     ],
+    "alwaysShowNotificationIcon": true,
     "copyFormatting": "none",
     "copyOnSelect": false,
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
@@ -36,30 +37,33 @@
     ],
     "profiles": {
         "defaults": {
+            "backgroundImage": "C:\\Users\\devck\\Pictures\\terminal-wallpaper\\windows 10.png",
             "backgroundImageOpacity": 0.2,
             "colorScheme": "Catppuccin Mocha",
             "cursorShape": "emptyBox",
             "font": {
                 "face": "JetBrainsMono Nerd Font"
             },
-            "opacity": 80,
-            "useAcrylic": true
+            "opacity": 70,
+            "useAcrylic": true,
+            "useAtlasEngine": true
         },
         "list": [
             {
-                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "hidden": false,
                 "name": "Windows PowerShell"
             },
             {
-                "commandline": "%SystemRoot%\\System32\\cmd.exe",
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
                 "hidden": false,
                 "name": "Command Prompt"
             },
             {
-                "backgroundImage": "D:\\Wallpapers\\swww\\Catppuccin-Mocha\\pastel-window.png",
+                "backgroundImage": "C:\\Users\\devck\\Pictures\\terminal-wallpaper\\anime-girl-headphones-desktop-computer-screen-ail.jpg",
+                "colorScheme": {
+                    "light": "Catppuccin Mocha"
+                },
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "name": "PowerShell",
@@ -70,6 +74,15 @@
                 "hidden": false,
                 "name": "Azure Cloud Shell",
                 "source": "Windows.Terminal.Azure"
+            },
+            {
+                "backgroundImage": "C:\\Users\\devck\\Pictures\\terminal-wallpaper\\Debian_Neofetch.png",
+                "bellStyle": "window",
+                "colorScheme": "One Half Dark",
+                "guid": "{58ad8b0c-3ef8-5f4d-bc6f-13e4c00f2530}",
+                "hidden": false,
+                "name": "Debian",
+                "source": "Windows.Terminal.Wsl"
             }
         ]
     },
@@ -305,6 +318,7 @@
             "yellow": "#808000"
         }
     ],
+    "theme": "Catppuccin Mocha",
     "themes": [
         {
             "name": "Catppuccin Mocha",
@@ -322,5 +336,6 @@
                 "useMica": false
             }
         }
-    ]
+    ],
+    "useAcrylicInTabRow": true
 }
