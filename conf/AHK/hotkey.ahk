@@ -1,10 +1,14 @@
 ﻿#Requires AutoHotkey v2.0
 
-;===========Variables=========;
+; █░█ ▄▀█ █▀█
+; ▀▄▀ █▀█ █▀▄
 terminal := "wt"		; windows terminal
 browser := "msedge"
 editor := "code"
 spotify := "spotify"
+currentYear := A_YYYY ; i.e. 2023
+currentMonth := A_MM	; i.e. 12
+screenshotFolder := "D:\--ShareX--\Screenshots\" . currentYear . "-" . currentMonth
 
 ; ▄▀█ █▀█ █▀█ █▀	Note:
 ; █▀█ █▀▀ █▀▀ ▄█	# WindowKey, ^ Ctrl, ! Alt
@@ -26,7 +30,8 @@ spotify := "spotify"
 }
 #PgUp::WinMaximize "A"							; 	Super + PgUp							-	maximize active window
 #PgDn::WinRestore "A"								;		Super + PgDn  						-	unmaximize active window
+#+x:: Run screenshotFolder					; 	Super + Shift + x					-	open ShareX screenshot folder
 
-;=============TODO============;
+; ▀█▀ █▀█  █▀▄ █▀█
+; ░█░ █▄█  █▄▀ █▄█
 ; ADD voicemeeter as volcontrol := "voicemeeter"
-; fix! terminal elevation
