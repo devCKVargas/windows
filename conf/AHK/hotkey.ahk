@@ -28,8 +28,18 @@ screenshotFolder := "D:\--ShareX--\Screenshots\" . currentYear . "-" . currentMo
 		WinRestore "A"
 	} else WinMaximize "A"
 }
-#PgUp::WinMaximize "A"							; 	Super + PgUp							-	maximize active window
-#PgDn::WinRestore "A"								;		Super + PgDn  						-	unmaximize active window
+#PgUp::{ 														; 	Super + PgUp							-	toggle maximize active window
+	ActWinState:=WinGetMinMax("A")
+	if(ActWinState > 0){
+		WinRestore "A"
+	} else WinMaximize "A"
+}
+#PgDn::{														;		Super + PgDn  						-	toggle unmaximize active window
+	ActWinState:=WinGetMinMax("A")
+	if(ActWinState > 0){
+		WinRestore "A"
+	} else WinMinimize "A"
+}
 #+x:: Run screenshotFolder					; 	Super + Shift + x					-	open ShareX screenshot folder
 
 ; ▀█▀ █▀█  █▀▄ █▀█
