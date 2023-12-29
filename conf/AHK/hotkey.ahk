@@ -21,7 +21,7 @@ screenshotFolder := "D:\--ShareX--\Screenshots\" . currentYear . "-" . currentMo
 ; █░█░█ █ █▄░█ █▀▄ █▀█ █░█░█
 ; ▀▄▀▄▀ █ █░▀█ █▄▀ █▄█ ▀▄▀▄▀	ToolTip "Window is Maximized"
 #q::Send "!{F4}"										; 	Super + Q									-	close active window
-^q::Send "!{F4}"										; 	Ctrl + Q									-	close active window
+;^q::Send "!{F4}"										; 	Ctrl + Q									-	close active window(Disabled)
 #f::{ 															;		Super + F									-	toggle maximize active window
 	ActWinState:=WinGetMinMax("A")
 	if(ActWinState > 0){
