@@ -1,3 +1,9 @@
+# Define the path to the packages file
+$packagesFilePath = ".\packages.txt"
+
+# Read package names from the file
+$packageNames = Get-Content $packagesFilePath | Where-Object { $_ -notmatch '^#' } | ForEach-Object { "`"$_`"" }
+
 #  # Winget (Slow download fix)
 #  # open settings using $ winget settings
 Write-Host "
@@ -43,7 +49,7 @@ if ($installChoco -eq 'Y' -or $installChoco -eq 'y') {
 	|I|n|s|t|a|l|l|i|n|g| |c|h|o|c|o|l|a|t|e|y| |a|p|p|s|
 	+-+-+-+-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+-+-+ +-+-+-+-+ "
 		
-	choco install -y "winget" "eartrumpet" "traffic-monitor" "nerd-fonts-jetbrainsMono" "nerd-fonts-arimo" "nerd-fonts-meslo" "dotnet-all" "winfetch" "openal" "nilesoft-shell" "amd-ryzen-chipset" "realtek-hd-audio-driver"
+	choco install winget eartrumpet traffic-monitor nerd-fonts-jetbrainsMono nerd-fonts-arimo nerd-fonts-meslo dotnet-all winfetch openal nilesoft-shell amd-ryzen-chipset realtek-hd-audio-driver -y
 		
 	Write-Host -Foreground Green "
 	+-+-+-+-+-+
@@ -86,71 +92,14 @@ if ($updateWinget -eq 'Y' -or $updateWinget -eq 'y') {
 	Write-Host -ForegroundColor Yellow "Skipping updates."
 }
 
-# █▀▄ █▀▀ █░█ # --source -s 
-# █▄▀ ██▄ ▀▄▀ # (winget,msstore)
-$installWingetAppsDev = Read-Host -Prompt "Install Dev apps? (Y/n)"
-if (-not $installWingetAppsDev) { $installWingetAppsDev = 'Y' }
+# Build the winget command
+$wingetCommand = "winget install $($packageNames -join ' ') -s winget --accept-package-agreements --accept-source-agreements -h"
 
-if ($installWingetAppsDev -eq 'Y' -or $installWingetAppsDev -eq 'y') {
-	Write-Host "
-	+-+-+-+-+-+-+-+-+-+-+ +-+-+-+ +-+-+-+-+
-	|I|n|s|t|a|l|l|i|n|g| |d|e|v| |a|p|p|s|
-	+-+-+-+-+-+-+-+-+-+-+ +-+-+-+ +-+-+-+-+ "
-	
-	winget install "git" "github cli" "github desktop" "lazygit" "nodejs" "terminal" "powershell" "Microsoft Visual Studio Code" "figma" "imagemagick" "ResponsivelyApp" "RipGrep MSVC" "oh my posh" -s winget --accept-package-agreements --accept-source-agreements -h
-	
-	Write-Host -Foreground Green "
-	+-+-+-+-+-+
-	|D|o|n|e|!|
-	+-+-+-+-+-+ "
+# Output the winget command
+Write-Host $wingetCommand
 
-} else {
-	Write-Host -ForegroundColor Yellow "Skipping Dev apps."
-}
-
-# ▄▀█ █▀█ █▀█ █▀ # Winget
-# █▀█ █▀▀ █▀▀ ▄█ # Source: Winget 
-$installWingetApps = Read-Host -Prompt "Install apps? (Y/n)"
-if (-not $installWingetApps) { $updateChoco = 'Y' }
-
-if ($installWingetApps -eq 'Y' -or $installWingetApps -eq 'y') {
-	Write-Host "
-	+-+-+-+-+-+-+-+-+-+-+ +-+-+-+-+-+-+ +-+-+-+-+
-	|I|n|s|t|a|l|l|i|n|g| |w|i|n|g|e|t| |a|p|p|s|
-	+-+-+-+-+-+-+-+-+-+-+ +-+-+-+-+-+-+ +-+-+-+-+ "
-
-	winget install "nvcleanstall" "powertoys" "AltSnap" "caprine" "discord" "telegram" "megasync" "fdm" "canva" "ahk" "k-lite mega codec pack" "obs studio" "VLC media player" "winrar" "anydesk" "gpu-z" "f.lux" "afterburner" "superf4" "wingetUI" "oracle.JDK.18" "7-zip" "Microsoft XNA Framework Redistributable Refresh" "CPUID CPU-Z" "sharex" "ookla.speedtest.CLI" "spotify" "spicetify.spicetify" "Appest.TickTick" "NextDNS.NextDNS.Desktop" "capcut" "qbittorrent.qbittorrent" "th-ch.YouTubeMusic" "IObit.IObitUnlocker" -s winget --accept-package-agreements --accept-source-agreements -h
-
-	Write-Host -Foreground Green "
-	+-+-+-+-+-+
-	|D|o|n|e|!|
-	+-+-+-+-+-+ "
-
-} else {
-	Write-Host -ForegroundColor Yellow "Skipping apps."
-}
-
-# █▀▄▀█ █▀   ▄▀█ █▀█ █▀█ █▀ # Winget
-# █░▀░█ ▄█   █▀█ █▀▀ █▀▀ ▄█ # source: msstore
-$installWingetAppsMS = Read-Host -Prompt "Install MS apps? (Y/n)"
-if (-not $installWingetAppsMS) { $installWingetAppsMS = 'Y' }
-
-if ($installWingetAppsMS -eq 'Y' -or $installWingetAppsMS -eq 'y') {
-	Write-Host "
-	+-+-+-+-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+ +-+-+-+-+
-	|I|n|s|t|a|l|l|i|n|g| |M|S|S|t|o|r|e| |a|p|p|s|
-	+-+-+-+-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+ +-+-+-+-+ "
-
-	winget install "Microsoft To Do" -s msstore --accept-package-agreements --accept-source-agreements -h
-
-	Write-Host -Foreground Green "
-	+-+-+-+-+-+
-	|D|o|n|e|!|
-	+-+-+-+-+-+ "
-
-} else {
-	Write-Host -ForegroundColor Yellow "Skipping Microsoft apps."
-}
+# Execute the winget command
+Invoke-Expression $wingetCommand
 
 
 Write-Host "

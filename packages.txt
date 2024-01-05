@@ -1,0 +1,55 @@
+## Winget
+# █▀▄ █▀▀ █░█
+# █▄▀ ██▄ ▀▄▀
+git
+github cli
+github desktop
+lazygit
+nodejs
+terminal
+powershell
+Microsoft Visual Studio Code
+figma
+imagemagick
+ResponsivelyApp
+RipGrep MSVC
+oh my posh
+# ▄▀█ █▀█ █▀█ █▀
+# █▀█ █▀▀ █▀▀ ▄█
+nvcleanstall
+powertoys
+AltSnap
+caprine
+discord
+telegram
+megasync
+canva
+ahk
+k-lite mega codec pack
+obs studio
+VLC media player
+winrar
+anydesk
+gpu-z
+f.lux
+afterburner
+superf4
+wingetUI
+oracle.JDK.18
+7-zip
+Microsoft.XNARedist
+CPUID.CPU-Z
+sharex
+ookla.speedtest.CLI
+spotify
+spicetify.spicetify
+Appest.TickTick
+NextDNS.NextDNS.Desktop
+capcut
+qbittorrent.qbittorrent
+th-ch.YouTubeMusic
+IObit.IObitUnlocker
+abbodi1406.vcredist
+# █▀▄▀█ █▀   ▄▀█ █▀█ █▀█ █▀
+# █░▀░█ ▄█   █▀█ █▀▀ █▀▀ ▄█
+Microsoft To Do
